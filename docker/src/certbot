@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "$(date): Dum-di-dum... I'm an imitated certbot!"

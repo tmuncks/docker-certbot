@@ -1,0 +1,20 @@
+services:
+  # This is an example docker-compose.yml for tmuncks/certbot docker image.
+  #
+  # Example pdns-credentials.ini:
+  #
+  #   dns_powerdns_api_url = https://api.mypowerdns.example.org
+  #   dns_powerdns_api_key = AbCbASsd!@34
+  #
+  certbot:
+    image: tmuncks/certbot:latest
+    environment:
+      - CERTBOT_ONESHOT=0
+    command: >-
+              certonly
+              --email noreply@example.com --agree-tos --no-eff-email --noninteractive
+              --authenticator dns-powerdns
+              --dns-powerdns-credentials /etc/letsencrypt/pdns-credentials.ini
+              -d example.com
+    volumes:
+      - ./certbot:/etc/letsencrypt
