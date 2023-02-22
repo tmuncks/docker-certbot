@@ -13,7 +13,7 @@ def do_certbot(argv):
     """
     Takes care of actually running certbot with the proper parameters
     """
-    command = ['./certbot'] + list(argv)
+    command = ['certbot'] + list(argv)
     print(f":: Running command: {' '.join(command)}")
     res = subprocess.run(command)
     print(f":: {command[0]}: {res}")
