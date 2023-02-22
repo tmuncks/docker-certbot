@@ -1,25 +1,6 @@
 #!/usr/bin/env python3
 """
-Docker script for certbot
 
-Parameters to `certbot` are passed as the command to the container. This works
-exactly as the original `certbot/certbot` image.
-
-When running, certificates are requested and the container exits when done.
-
-It is possible to disable this `oneshot` operation, to have the container
-auto-renew certificates nightly at 03:00. This is achieved by setting the
-`CERTBOT_ONESHOT` environment variable to `0`.
-
-Parameters to the dns-powerdns authenticator plugin, can be specified by
-setting the `DNS_POWERDNS_API_URL` and `DNS_POWERDNS_API_KEY` environment
-variables
-
-Environment variables:
-    CERTBOT_ONESHOT             Set to 0 to automatically rerun certbot every
-                                night at 03:00
-    DNS_POWERDNS_API_URL        Specify value for --dns-powerdns-api-url
-    DNS_POWERDNS_API_KEY        Specify value for --dns-powerdns-api-key
 """
 import sys
 import os
@@ -42,6 +23,10 @@ def main(argv):
     """
     Main loop
     """
+    # noninteractive mode always
+    if '--noninteractive' not in argv:
+        argv.insert(0, '--noninteractive')
+
     # handle options
     # any changes to argv is done at the start of the list, to make the generated changes
     # overrideable by command line args
