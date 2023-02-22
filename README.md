@@ -1,6 +1,8 @@
-## certbot docker container
+## Certbot docker container
 
 With certbot-dns-powerdns plugin that supports PowerDNS-Admin
+
+Git repository: https://github.com/tmuncks/docker-certbot/
 
 ### How it works
 
@@ -25,18 +27,16 @@ setting the `DNS_POWERDNS_API_URL` and `DNS_POWERDNS_API_KEY` environment
 variables.
 
 They can also be passed as a mounted `pdns-credentials.ini` file,
-containing the `--dns-powerdns-api-url` and `--dns-powerdns-api-key` options,
+containing the `dns-powerdns-api-url` and `dns-powerdns-api-key` options,
 as documented for [certbot-dns-powerdns](https://github.com/tmuncks/certbot-dns-powerdns).
 
-
 ### Environment variables
-
-Environment variables:
-    CERTBOT_ONESHOT             Set to 0 to automatically rerun certbot every
-                                night at 03:00
-    DNS_POWERDNS_API_URL        Specify value for --dns-powerdns-api-url
-    DNS_POWERDNS_API_KEY        Specify value for --dns-powerdns-api-key
+|ENV|Description|
+|---|-----------|
+|`CERTBOT_ONESHOT`|Set to 0 to automatically rerun certbot every night at 03:00|
+|`DNS_POWERDNS_API_URL`|Specify value for --dns-powerdns-api-url|
+|`DNS_POWERDNS_API_KEY`|Specify value for --dns-powerdns-api-key|
 
 ### Examples
 
-An example `docker-compose.yml` can be found under the `compose` directory.
+An example `docker-compose.yml` can be found under the `compose` directory in the repo.
